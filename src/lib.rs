@@ -206,12 +206,12 @@ impl HomeAssistant {
         }
     }
 
-    /// queries `/api/services` and returns a Vec containing [`Value`](serde_json::Value) (subject to possibly change in the future)
+    /// queries `/api/services` and returns a Vec containing [`ServicesResponse`](structs::ServicesResponse) (subject to possibly change in the future)
     pub async fn services(
         &self,
         ha_url: Option<String>,
         ha_token: Option<String>,
-    ) -> anyhow::Result<Vec<serde_json::Value>> {
+    ) -> anyhow::Result<Vec<structs::ServicesResponse>> {
         let vars = globalvars();
         let url = validate().arg(ha_url).or_else(|_| {
             vars.url
@@ -224,11 +224,9 @@ impl HomeAssistant {
                 .ok_or(anyhow::Error::msg("HA_TOKEN is required"))
         })?;
 
-        let client = request(url, token, "/api/services").await?.bytes().await?;
+        let client = request(url, token, "/api/services").await?.json::<Vec<structs::ServicesResponse>>().await?;
 
-        let services: Vec<serde_json::Value> = serde_json::from_slice(&client)?;
-
-        Ok(services)
+        Ok(client)
     }
 
     /// queries `/api/history/period/<optionalargs>` and returns a Vec containing [`HistoryResponse`](structs::HistoryResponse) struct

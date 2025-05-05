@@ -108,3 +108,9 @@ pub struct ConfigCheckResponse {
     pub result: String,
     pub warnings: Option<String>,
 }
+
+#[derive(Deserialize, Debug, Clone)]
+pub struct ServicesResponse {
+    pub domain: String,
+    pub services: serde_json::Value,
+}
