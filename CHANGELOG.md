@@ -1,3 +1,7 @@
+## [0.1.2] - 2025-05-05
+### Added
+- impl `Default` for all structs
+
 ## [0.1.1] - 2025-05-05
 ### Changed
 - `hass().services()` no longer returns `Value`, instead it returns `ServicesResponse`

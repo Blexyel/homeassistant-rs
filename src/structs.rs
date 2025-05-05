@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Deserialize, Debug, Clone)]
+#[derive(Deserialize, Debug, Clone, Default)]
 pub struct ConfigResponse {
     pub components: Vec<String>,
     pub config_dir: String,
@@ -14,7 +14,7 @@ pub struct ConfigResponse {
     pub whitelist_external_dirs: Vec<String>,
 }
 
-#[derive(Deserialize, Debug, Clone)]
+#[derive(Deserialize, Debug, Clone, Default)]
 pub struct UnitSystem {
     pub length: String,
     pub mass: String,
@@ -22,13 +22,13 @@ pub struct UnitSystem {
     pub volume: String,
 }
 
-#[derive(Deserialize, Debug, Clone)]
+#[derive(Deserialize, Debug, Clone, Default)]
 pub struct EventResponse {
     pub event: String,
     pub listener_count: u16,
 }
 
-#[derive(Deserialize, Debug, Clone)]
+#[derive(Deserialize, Debug, Clone, Default)]
 pub struct HistoryResponse {
     pub entity_id: Option<String>,
     pub state: String,
@@ -37,7 +37,7 @@ pub struct HistoryResponse {
     pub last_updated: Option<String>,
 }
 
-#[derive(Deserialize, Debug, Clone)]
+#[derive(Deserialize, Debug, Clone, Default)]
 pub struct Attributes {
     pub friendly_name: Option<String>,
     pub editable: Option<bool>,
@@ -49,7 +49,7 @@ pub struct Attributes {
     pub other_fields: serde_json::Value,
 }
 
-#[derive(Deserialize, Debug, Clone)]
+#[derive(Deserialize, Debug, Clone, Default)]
 pub struct LogBook {
     pub name: String,
     pub message: Option<String>,
@@ -61,7 +61,7 @@ pub struct LogBook {
     pub when: String,
 }
 
-#[derive(Deserialize, Debug, Clone)]
+#[derive(Deserialize, Debug, Clone, Default)]
 pub struct StatesResponse {
     pub entity_id: Option<String>,
     pub state: String,
@@ -72,44 +72,44 @@ pub struct StatesResponse {
     pub context: Option<Context>,
 }
 
-#[derive(Deserialize, Debug, Clone)]
+#[derive(Deserialize, Debug, Clone, Default)]
 pub struct Context {
     pub id: String,
     pub parent_id: Option<String>,
     pub user_id: Option<String>,
 }
 
-#[derive(Deserialize, Debug, Clone)]
+#[derive(Deserialize, Debug, Clone, Default)]
 pub struct CalendarResponse {
     pub entity_id: String,
     pub name: String,
 }
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, Clone, Default)]
 pub struct StatesRequest {
     pub state: String,
     #[serde(flatten)]
     pub attributes: Option<serde_json::Value>,
 }
 
-#[derive(Deserialize, Debug, Clone)]
+#[derive(Deserialize, Debug, Clone, Default)]
 pub struct SimpleResponse {
     pub message: String,
 }
 
-#[derive(Serialize, Debug, Clone)]
+#[derive(Serialize, Debug, Clone, Default)]
 pub struct TemplateRequest {
     pub template: String,
 }
 
-#[derive(Deserialize, Debug, Clone)]
+#[derive(Deserialize, Debug, Clone, Default)]
 pub struct ConfigCheckResponse {
     pub errors: Option<String>,
     pub result: String,
     pub warnings: Option<String>,
 }
 
-#[derive(Deserialize, Debug, Clone)]
+#[derive(Deserialize, Debug, Clone, Default)]
 pub struct ServicesResponse {
     pub domain: String,
     pub services: serde_json::Value,
