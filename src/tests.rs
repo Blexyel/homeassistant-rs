@@ -9,6 +9,8 @@ async fn main() -> anyhow::Result<()> {
     use protokoll::log;
     use serde_json::json;
 
+    use crate::structs::Attributes;
+
     protokoll::debug!("testing config");
     hass().config(None, None).await?;
     protokoll::debug!("finished testing config");
@@ -23,7 +25,7 @@ async fn main() -> anyhow::Result<()> {
         .history(
             None,
             None,
-            Some("light.bedroom_local_bedroom_local"),
+            Some("light.bedroom_light_shelly"),
             true,
             true,
             true,
@@ -32,13 +34,13 @@ async fn main() -> anyhow::Result<()> {
     protokoll::debug!("finished testing history");
     protokoll::debug!("testing logbook");
     hass()
-        .logbook(None, None, Some("light.bedroom_local_bedroom_local"))
+        .logbook(None, None, Some("light.bedroom_light_shelly"))
         .await?;
     protokoll::debug!("finished testing logbook");
     protokoll::debug!("testing states");
     protokoll::debug!("testing single entity");
     hass()
-        .states(None, None, Some("light.bedroom_local_bedroom_local"))
+        .states(None, None, Some("light.bedroom_light_shelly"))
         .await?;
     protokoll::debug!("testing multiple entities");
     hass().states(None, None, None).await?;
@@ -66,7 +68,7 @@ async fn main() -> anyhow::Result<()> {
                     .duration_since(std::time::UNIX_EPOCH)?
                     .as_secs()
                     .to_string(),
-                attributes: Some(json!({"friendly_name": "homeassistant-rs testing"})),
+                attributes: Some(Attributes {friendly_name: Some("homeassistant-rs testing".to_string()), editable: None, id: None, source: None, user_id: None, icon: None, other_fields: serde_json::Value::Null }),
             },
         )
         .await?;

@@ -37,7 +37,7 @@ pub struct HistoryResponse {
     pub last_updated: Option<String>,
 }
 
-#[derive(Deserialize, Debug, Clone, Default)]
+#[derive(Serialize, Deserialize, Debug, Clone, Default)]
 pub struct Attributes {
     pub friendly_name: Option<String>,
     pub editable: Option<bool>,
@@ -89,7 +89,7 @@ pub struct CalendarResponse {
 pub struct StatesRequest {
     pub state: String,
     #[serde(flatten)]
-    pub attributes: Option<serde_json::Value>,
+    pub attributes: Option<Attributes>,
 }
 
 #[derive(Deserialize, Debug, Clone, Default)]

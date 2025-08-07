@@ -44,7 +44,7 @@
 //!     .history(
 //!         None,
 //!         None,
-//!         Some("light.bedroom_local_bedroom_local"),
+//!         Some("light.bedroom_light_shelly"),
 //!         /// minimal_response
 //!         true,
 //!         /// no_attributes
@@ -53,8 +53,8 @@
 //!         true,
 //!     )
 //!     .await.unwrap();
-//! hass().logbook(None, None, Some("light.bedroom_local_bedroom_local")).await.unwrap();
-//! hass().states(None, None, Some("light.bedroom_local_bedroom_local")).await.unwrap();
+//! hass().logbook(None, None, Some("light.bedroom_light_shelly")).await.unwrap();
+//! hass().states(None, None, Some("light.bedroom_light_shelly")).await.unwrap();
 //! hass().states(None, None, None).await.unwrap();
 //! hass().error_log(None, None).await.unwrap();
 //!  # });

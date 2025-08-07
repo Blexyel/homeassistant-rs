@@ -1,3 +1,7 @@
+## [0.1.3] - 2025-07-08
+### Fixed
+- wrong attributes type on `StatesRequest`
+
 ## [0.1.2] - 2025-05-05
 ### Added
 - impl `Default` for all structs
