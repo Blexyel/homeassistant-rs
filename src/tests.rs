@@ -87,7 +87,7 @@ async fn main() -> anyhow::Result<()> {
             None,
             "light",
             "turn_on",
-            json!({"entity_id": "light.bedroom_local_bedroom_local", "rgb_color": [0,0,255]}),
+            json!({"entity_id": "light.bedroom_light_shelly", "rgb_color": [0,0,255]}),
             false,
         )
         .await?;
